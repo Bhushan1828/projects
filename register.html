@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Pass Registration</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        display: flex;
+        width: 750px;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Left Side */
+
+      .left {
+        background: linear-gradient(to bottom, #4facfe, #00f2fe);
+        color: white;
+        width: 40%;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .left h2 {
+        margin-bottom: 10px;
+      }
+
+      .left p {
+        font-size: 14px;
+      }
+
+      .bus-icon {
+        font-size: 60px;
+        margin-bottom: 15px;
+      }
+
+      /* Right Side */
+
+      .right {
+        width: 60%;
+        padding: 25px;
+      }
+
+      .right h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #4facfe;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      .register {
+        background: #4facfe;
+        color: white;
+      }
+
+      .register:hover {
+        background: #2f8ef7;
+      }
+
+      .login {
+        background: #f1f1f1;
+      }
+
+      .login:hover {
+        background: #ddd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left">
+        <div class="bus-icon">🚌</div>
+        <h2>Student Bus Pass</h2>
+        <p>Register to Apply for Your College Bus Pass and Travel Easily</p>
+      </div>
+
+      <div class="right">
+        <h1>Registration</h1>
+
+        <label>Student Name</label>
+        <input type="text" placeholder="Enter your name" id="name" />
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" id="email" />
+
+        <label>Mobile</label>
+        <input type="text" placeholder="Enter mobile number" id="mobile" />
+
+        <label>College Name</label>
+        <input type="text" placeholder="Enter college name" id="college" />
+
+        <label>Address</label>
+        <input type="text" placeholder="Enter address" id="address" />
+
+        <button onclick="register()">Create Account</button>
+        <button class="login">Already Have Account</button>
+      </div>
+    </div>
+    <script>
+      async function register() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let mobile = document.getElementById("mobile").value;
+        let college = document.getElementById("college").value;
+        let address = document.getElementById("address").value;
+        let password = document.getElementById("password").value;
+
+        if (
+          name == "" ||
+          email == "" ||
+          mobile == "" ||
+          college == "" ||
+          address == "" ||
+          password == ""
+        ) {
+          alert("All fields are required");
+          return;
+        }
+
+        let data = {
+          name,
+          email,
+          mobile,
+          college,
+          address,
+          password,
+        };
+
+        let res = await fetch("http://localhost:5000/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        let msg = await res.text();
+
+        alert(msg);
+
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>
