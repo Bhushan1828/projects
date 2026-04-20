@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: linear-gradient(to right, #ff9966, #ff5e62);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: white;
+        padding: 30px;
+        width: 320px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: #ff5e62;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #e64a4f;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🛠 Admin Login</h1>
+
+      <input id="email" placeholder="Admin Email" />
+      <input id="password" type="password" placeholder="Password" />
+
+      <button onclick="adminLogin()">Login</button>
+    </div>
+
+    <script>
+      async function adminLogin() {
+        let data = {
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+        };
+
+        let res = await fetch("http://localhost:5000/admin-login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        let msg = await res.text();
+
+        alert(msg);
+      }
+    </script>
+  </body>
+</html>

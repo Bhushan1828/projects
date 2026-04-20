@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to right, #fe4fde, #00f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container1 {
+      background-color: blueviolet;
+      padding: 30px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    label {
+      font: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 2px solid #610e0e;
+    }
+    input:focus {
+      outline: none;
+      border-color: #fe4fde;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .login-btn {
+      background-color: #fe4fde;
+      color: white;
+    }
+
+    .login-btn:hover {
+      background-color: #d83ac0;
+    }
+
+    .signup-btn {
+      background-color: #f1f1f1;
+    }
+
+    .signup-btn:hover {
+      background-color: #ddd;
+    }
+  </style>
+  <body>
+    <div class="container1">
+      <h1>Login Here</h1>
+      <label type="email">Email Id'</label>
+      <input placeholder="Enter your Email Id" />
+      <label type="password">Password</label>
+      <input placeholder="Enter Your Password Here" />
+      <button class="login-btn">Login Button</button>
+      <button class="signup-btn">Go to SingUp</button>
+    </div>
+  </body>
+</html>
